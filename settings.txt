@@ -1,0 +1,6 @@
+{"Palvelin": "127.0.0.1",
+"Portti": 5432,
+"Käyttäjätunnus": "Hippo",
+"Salasana": "Potamus123",
+"Tietokanta": "Autolainaus",
+"Skeema": "Public" }
