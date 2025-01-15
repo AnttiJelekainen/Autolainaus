@@ -4,7 +4,8 @@
 # KIRJASTOT JA MODUULIT
 # ---------------------
 
-# import json
+import json
+from cryptography import fernet # Symmetrinen salaustyökalu
 
 # # Avataan tiedosto lukua varten
 # settingsFile = open("settings.txt", "rt")
@@ -51,3 +52,21 @@
 
 # with open('settings.txt', 'rt') as settingsFile6:
 #     print(settingsFile6.read())
+
+# Luodaan oikean mittainen salausavain
+chipherKey = fernet.Fernet.generate_key()
+
+# Määritellään salausalgoritmi käyttämään luotua avainta
+chipher = fernet.Fernet(chipherKey)
+
+# Määritellään teksti tavuiksi (8bit)
+plainPassword = b'Q2werty7'
+
+encryptedPassword = chipher.encrypt(plainPassword)
+
+print(f'Salatussa muodossa: {encryptedPassword.decode()}')
+
+# Puretaan salaus
+decryptedPassword = chipher.decrypt(encryptedPassword).decode()
+
+print(f'Salaus purettuna on: {decryptedPassword}')
